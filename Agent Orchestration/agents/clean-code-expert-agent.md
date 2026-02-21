@@ -18,6 +18,15 @@ This agent owns all decisions about **naming, structure, cohesion, coupling, and
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Clean code review is primarily a language and readability judgment task. Requires strong understanding of C# idioms, SOLID principles, and the KISS/YAGNI tradeoffs that distinguish good from over-engineered code.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```

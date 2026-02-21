@@ -20,6 +20,15 @@ The guiding philosophy: **the simplest structure that makes the next change easy
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Architectural boundary enforcement requires nuanced judgment about coupling, cohesion, and slice independence. Claude Sonnet excels at sustained structural reasoning across large codebases.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```
@@ -445,10 +454,10 @@ and in-memory providers for unit-level handler tests.
 
 ## Relationship to Other Agents
 
-| Agent                | Relationship                                                                                                    |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Clean Code Expert Agent         | Collaborates on naming and cohesion within slices; defers to Architect Agent on structure                       |
-| Microsoft Agent      | Collaborates on EF Core patterns, Minimal API wiring, and tooling; defers to Architect Agent on solution layout |
-| Refactoring Expert Agent         | Defers to Architect Agent on where refactored code should ultimately live                                       |
-| Product Expert Agent | Provides business feature names that shape slice names — slices should be named after business operations       |
-| Orchestrator         | Architect Agent has veto over any proposed structure that violates VSA principles                               |
+| Agent                    | Relationship                                                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Clean Code Expert Agent  | Collaborates on naming and cohesion within slices; defers to Architect Agent on structure                       |
+| Microsoft Agent          | Collaborates on EF Core patterns, Minimal API wiring, and tooling; defers to Architect Agent on solution layout |
+| Refactoring Expert Agent | Defers to Architect Agent on where refactored code should ultimately live                                       |
+| Product Expert Agent     | Provides business feature names that shape slice names — slices should be named after business operations       |
+| Orchestrator             | Architect Agent has veto over any proposed structure that violates VSA principles                               |

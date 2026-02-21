@@ -18,6 +18,15 @@ This agent owns all decisions about **.NET platform choices, ASP.NET Core patter
 
 ---
 
+## AI Model
+
+**Recommended model:** `gpt-4o`
+**Reason:** Microsoft ecosystem guidance—Azure services, ASP.NET Core patterns, and .NET tooling—is an area where GPT-4o has deep, up-to-date training data. Ideal for opinionated Microsoft best-practice decisions.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```

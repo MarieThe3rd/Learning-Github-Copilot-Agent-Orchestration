@@ -9,6 +9,15 @@ The Code Historian Agent is the **immutable record keeper** of the entire modern
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Changelog authoring and historical analysis are language-heavy tasks requiring structured prose generation and precise before/after diff comprehension—Claude Sonnet's core strengths.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```

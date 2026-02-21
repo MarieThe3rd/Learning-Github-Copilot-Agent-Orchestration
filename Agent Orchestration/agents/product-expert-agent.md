@@ -20,6 +20,15 @@ The Product Expert Agent activates fully in **Phase 2** but has a stake in all p
 
 ---
 
+## AI Model
+
+**Recommended model:** `o3`
+**Reason:** Inferring business rules from legacy behaviour and resolving ambiguous requirement conflicts requires frontier-level reasoning. Business rule decisions are irreversible acceptance contracts.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```
@@ -242,13 +251,13 @@ This checklist drives Phase 3 integration and acceptance testing.
 
 ## Relationship to Other Agents
 
-| Agent           | Relationship                                                                                             |
-| --------------- | -------------------------------------------------------------------------------------------------------- |
-| Legacy Code Expert Agent  | Primary supplier of inferred rules — feeds raw observations to Product Expert                            |
-| Refactoring Expert Agent    | Confirms whether a behavior is structural (refactoring artifact) or genuine business logic               |
-| Clean Code Expert Agent    | Consults on naming — Product Expert provides business terms; Clean Code Expert Agent aligns code names              |
-| Microsoft Agent | Consults when a rule has architectural implications (e.g., must be enforced at API boundary)             |
-| Orchestrator    | Receives escalations; Product Expert is the only non-Orchestrator agent that can block phase transitions |
+| Agent                    | Relationship                                                                                             |
+| ------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Legacy Code Expert Agent | Primary supplier of inferred rules — feeds raw observations to Product Expert                            |
+| Refactoring Expert Agent | Confirms whether a behavior is structural (refactoring artifact) or genuine business logic               |
+| Clean Code Expert Agent  | Consults on naming — Product Expert provides business terms; Clean Code Expert Agent aligns code names   |
+| Microsoft Agent          | Consults when a rule has architectural implications (e.g., must be enforced at API boundary)             |
+| Orchestrator             | Receives escalations; Product Expert is the only non-Orchestrator agent that can block phase transitions |
 
 ---
 
