@@ -2,7 +2,7 @@
 
 ## Goal
 
-Enforce Vertical Slice Architecture. Apply SOLID principles throughout. Ensure every part of the codebase is structured so that a competent developer unfamiliar with the project can understand, modify, and extend any feature without touching anything unrelated to it.
+Enforce Vertical Slice Architecture. Apply SOLID principles throughout. Upgrade the application to **.NET 10 LTS**. Ensure every part of the codebase is structured so that a competent developer unfamiliar with the project can understand, modify, and extend any feature without touching anything unrelated to it.
 
 ---
 
@@ -11,6 +11,9 @@ Enforce Vertical Slice Architecture. Apply SOLID principles throughout. Ensure e
 Phase 3 is complete when **all** of the following are true:
 
 ```markdown
+- [ ] Target framework updated to `net10.0` in all .csproj files
+- [ ] All NuGet packages updated to .NET 10 compatible versions
+- [ ] Build clean on .NET 10 (zero errors, zero new warnings after upgrade)
 - [ ] All features organized into vertical slices (one folder per feature)
 - [ ] No horizontal layers (no Controllers/, Services/, Repositories/ as top-level folders)
 - [ ] No cross-slice dependencies — slices are self-contained
@@ -40,11 +43,28 @@ Phase 3 is complete when **all** of the following are true:
 | **Console App Expert Agent**  | Primary (console apps) — drives worker and service restructuring                             |
 | **Clean Code Expert Agent**   | Primary — enforces naming, SOLID, method size, cohesion throughout                           |
 | **Refactoring Expert Agent**  | Primary — sequences and executes all refactoring catalog steps                               |
-| **Microsoft Practices Agent** | Advisory — validates .NET 8 idioms, DI patterns, EF Core usage                               |
+| **Microsoft Practices Agent** | Primary — drives .NET 10 upgrade; validates DI patterns, EF Core, Serilog, security          |
 | **Product Expert Agent**      | Authority — Business Rule Catalogue is now immutable; no rule may change                     |
 | **QA Agent**                  | Validates — runs full regression suite; signs off UAT readiness                              |
 | **Code Historian Agent**      | Records every CHR-NNN; ensures no change bypasses peer review                                |
 | **Documentation Agent**       | Publishes final architecture docs, ADR records, and Azure DevOps wiki                        |
+
+---
+
+## .NET 10 Upgrade
+
+The .NET 10 upgrade is the first task of Phase 3 and is owned by the **Microsoft Practices Agent (.NET 8)**. It must be complete and green before any architectural restructuring begins.
+
+**Upgrade sequence:**
+
+1. Update all `.csproj` target frameworks to `net10.0`
+2. Update all NuGet packages to .NET 10 compatible versions
+3. Fix any .NET 10 breaking changes (BCL changes, nullable warnings, etc.)
+4. Build must be clean with zero errors and zero new warnings
+5. All existing tests must be green on .NET 10
+6. Commit: `[PHASE-3] [CHR-NNN] Upgrade target framework to net10.0`
+
+The upgrade is a single batched commit only for the `.csproj` and package changes. All subsequent structural work follows the one-change-per-commit rule.
 
 ---
 

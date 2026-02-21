@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document describes how the nine specialist agents and the Orchestrator interact: the message protocols, decision trees, escalation paths, and the overall flow from initial legacy analysis to final .NET 10 delivery.
+This document describes how the specialist agents and the Orchestrator interact: the message protocols, decision trees, escalation paths, and the overall flow from initial analysis to final delivery.
+
+> **Note:** The phase-specific workflows below were authored for the **Net48 WebForms** migration system. The **.NET 8 Apps** system follows the same communication patterns — all messages route through the Orchestrator, the same message types apply, and the same peer review protocol is enforced — but with different phase activities. Refer to the phase documents in [`../Net8 Apps/phases/`](../Net8%20Apps/phases/) for the .NET 8–specific phase flows.
 
 ---
 

@@ -106,7 +106,7 @@ Copy this output and bring it back to the Orchestrator session. Paste it and say
 
 ## Step 5 — Run a Peer Review
 
-Before any change is committed, it must be reviewed by at least one other agent. The peer review process is defined in [`peer-review-protocol.md`](peer-review-protocol.md).
+Before any change is committed, it must be reviewed by at least one other agent. The peer review process is defined in [`../Shared Agents/peer-review-protocol.md`](../Shared%20Agents/peer-review-protocol.md).
 
 **In practice:**
 
@@ -125,7 +125,7 @@ Before any change is committed, it must be reviewed by at least one other agent.
 
 ## Step 6 — Log the Change with the Code Historian
 
-Every approved, committed change must be recorded. Open a new tab, load the Code Historian system prompt from [`agents/code-historian-agent.md`](agents/code-historian-agent.md), and say:
+Every approved, committed change must be recorded. Open a new tab, load the Code Historian system prompt from [`../Shared Agents/code-historian-agent.md`](../Shared%20Agents/code-historian-agent.md), and say:
 
 > _"Log this change. Before: [original code snippet]. After: [new code snippet]. Proposed by: Legacy Code Expert Agent. Approved by: Refactoring Expert Agent."_
 
@@ -181,18 +181,18 @@ The Orchestrator will run through the gate checklist from [`phases/phase-1-safe-
 
 ## Agent Quick Reference
 
-| Agent               | File                                                                         | When to use                                     |
-| ------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------- |
-| Orchestrator        | [`orchestrator.md`](orchestrator.md)                                         | Always open — master controller                 |
-| Legacy Code Expert  | [`agents/legacy-code-expert-agent.md`](agents/legacy-code-expert-agent.md)   | Seam analysis, characterization tests, Phase 1  |
-| Refactoring Expert  | [`agents/refactoring-expert-agent.md`](agents/refactoring-expert-agent.md)   | Behavior-preserving review, refactoring catalog |
-| Clean Code Expert   | [`agents/clean-code-expert-agent.md`](agents/clean-code-expert-agent.md)     | Naming, SOLID, structure review, Phase 3        |
-| Microsoft Practices | [`agents/microsoft-practices-agent.md`](agents/microsoft-practices-agent.md) | .NET 10, ASP.NET Core, EF Core decisions        |
-| Architect           | [`agents/architect-agent.md`](agents/architect-agent.md)                     | Vertical Slice Architecture, solution layout    |
-| Product Expert      | [`agents/product-expert-agent.md`](agents/product-expert-agent.md)           | Business rule discovery and approval, Phase 2   |
-| QA Agent            | [`agents/qa-agent.md`](agents/qa-agent.md)                                   | End-to-end test cases, UAT sign-off             |
-| Code Historian      | [`agents/code-historian-agent.md`](agents/code-historian-agent.md)           | Log every approved change as CHR-NNN            |
-| Documentation       | [`agents/documentation-agent.md`](agents/documentation-agent.md)             | /docs, Azure DevOps wiki, Mermaid diagrams      |
+| Agent               | File                                                                                             | When to use                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| Orchestrator        | [`orchestrator.md`](orchestrator.md)                                                             | Always open — master controller                 |
+| Legacy Code Expert  | [`agents/legacy-code-expert-agent.md`](agents/legacy-code-expert-agent.md)                       | Seam analysis, characterization tests, Phase 1  |
+| Refactoring Expert  | [`../Shared Agents/refactoring-expert-agent.md`](../Shared%20Agents/refactoring-expert-agent.md) | Behavior-preserving review, refactoring catalog |
+| Clean Code Expert   | [`../Shared Agents/clean-code-expert-agent.md`](../Shared%20Agents/clean-code-expert-agent.md)   | Naming, SOLID, structure review, Phase 3        |
+| Microsoft Practices | [`agents/microsoft-practices-agent.md`](agents/microsoft-practices-agent.md)                     | .NET 10, ASP.NET Core, EF Core decisions        |
+| Architect           | [`../Shared Agents/architect-agent.md`](../Shared%20Agents/architect-agent.md)                   | Vertical Slice Architecture, solution layout    |
+| Product Expert      | [`../Shared Agents/product-expert-agent.md`](../Shared%20Agents/product-expert-agent.md)         | Business rule discovery and approval, Phase 2   |
+| QA Agent            | [`../Shared Agents/qa-agent.md`](../Shared%20Agents/qa-agent.md)                                 | End-to-end test cases, UAT sign-off             |
+| Code Historian      | [`../Shared Agents/code-historian-agent.md`](../Shared%20Agents/code-historian-agent.md)         | Log every approved change as CHR-NNN            |
+| Documentation       | [`../Shared Agents/documentation-agent.md`](../Shared%20Agents/documentation-agent.md)           | /docs, Azure DevOps wiki, Mermaid diagrams      |
 
 ---
 
@@ -215,6 +215,6 @@ The Orchestrator will run through the gate checklist from [`phases/phase-1-safe-
 ## Where to Go Next
 
 - **Phase details:** [`phases/`](phases/) — gate checklists for each phase
-- **Peer review rules:** [`peer-review-protocol.md`](peer-review-protocol.md)
-- **Agent communication model:** [`workflow.md`](workflow.md)
+- **Peer review rules:** [`../Shared Agents/peer-review-protocol.md`](../Shared%20Agents/peer-review-protocol.md)
+- **Agent communication model:** [`../Shared Agents/workflow.md`](../Shared%20Agents/workflow.md)
 - **Full system overview:** [`README.md`](README.md)

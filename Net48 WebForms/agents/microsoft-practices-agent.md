@@ -90,7 +90,7 @@ You escalate stateful session dependencies to the Orchestrator for architectural
 | `Cache` / `HttpRuntime.Cache`              | `IMemoryCache` / `IDistributedCache`     |                                                |
 | `WebClient` / `HttpWebRequest`             | `IHttpClientFactory` + `HttpClient`      | Always use `IHttpClientFactory`                |
 | `SmtpClient`                               | `MailKit` / Azure Communication Services | `SmtpClient` is deprecated                     |
-| `Trace` / `Debug.WriteLine`                | `ILogger<T>` + structured logging        | Use Serilog or MS.Extensions.Logging           |
+| `Trace` / `Debug.WriteLine`                | `ILogger<T>` + structured logging        | Serilog with logz.io sink (mandatory)          |
 | `Thread.Sleep`                             | `await Task.Delay()`                     | Async all the way                              |
 | `SqlConnection` / `SqlCommand` directly    | Entity Framework Core / Dapper           | EF Core preferred for new models               |
 | `DataSet` / `DataTable`                    | Typed entities / DTOs                    | DataSet is a .NET 4.x era anti-pattern         |
@@ -115,7 +115,7 @@ Validation:       Plain C# validator classes (static Validate() method) — no F
 Mapping:          Explicit mapping methods on request/response records — no AutoMapper
 Persistence:      Entity Framework Core 10 (Code First w/ Migrations)
 Auth:             ASP.NET Core Identity + JWT Bearer / Cookie
-Logging:          Serilog → structured JSON → Application Insights / Seq
+Logging:          Serilog → structured JSON → logz.io (Serilog.Sinks.Http + logzio endpoint)
 Caching:          IMemoryCache (L1) + Redis (L2) via IDistributedCache
 Health:           ASP.NET Core Health Checks
 Testing:          xUnit (mandatory) + Testcontainers + NetArchTest

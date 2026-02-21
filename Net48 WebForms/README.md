@@ -57,26 +57,26 @@ A master **Orchestrator** delegates to nine specialized agents across three disc
 
 ## Agent Roster
 
-| Agent                    | Authority                                                                  | Document                                                                   |
-| ------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Orchestrator             | Phase control, conflict resolution, progress tracking                      | [orchestrator.md](orchestrator.md)                                         |
-| Architect Agent          | Vertical slice architecture, solution structure, KISS/YAGNI                | [agents/architect-agent.md](agents/architect-agent.md)                     |
-| Legacy Code Expert Agent | Legacy code, seam detection, characterization tests                        | [agents/legacy-code-expert-agent.md](agents/legacy-code-expert-agent.md)   |
-| Refactoring Expert Agent | Refactoring catalog, behavior-preserving transformations                   | [agents/refactoring-expert-agent.md](agents/refactoring-expert-agent.md)   |
-| Clean Code Expert Agent  | Clean code, SOLID, KISS, naming, cohesion, no over-engineering             | [agents/clean-code-expert-agent.md](agents/clean-code-expert-agent.md)     |
-| Microsoft Agent          | .NET 10, ASP.NET Core, EF Core, xUnit, MIT-licensed packages               | [agents/microsoft-practices-agent.md](agents/microsoft-practices-agent.md) |
-| Product Expert Agent     | Business rule catalogue (immutable after Phase 2 approval)                 | [agents/product-expert-agent.md](agents/product-expert-agent.md)           |
-| QA Agent                 | End-to-end manual test cases, workflow maps, UAT sign-off                  | [agents/qa-agent.md](agents/qa-agent.md)                                   |
-| Code Historian Agent     | BR catalogue guardian; immutable change chronicle; peer review enforcement | [agents/code-historian-agent.md](agents/code-historian-agent.md)           |
-| Documentation Agent      | /docs folder; Azure DevOps wiki; metrics, dependencies, external systems   | [agents/documentation-agent.md](agents/documentation-agent.md)             |
+| Agent                    | Authority                                                                  | Document                                                                                       |
+| ------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Orchestrator             | Phase control, conflict resolution, progress tracking                      | [orchestrator.md](orchestrator.md)                                                             |
+| Architect Agent          | Vertical slice architecture, solution structure, KISS/YAGNI                | [../Shared Agents/architect-agent.md](../Shared%20Agents/architect-agent.md)                   |
+| Legacy Code Expert Agent | Legacy code, seam detection, characterization tests                        | [agents/legacy-code-expert-agent.md](agents/legacy-code-expert-agent.md)                       |
+| Refactoring Expert Agent | Refactoring catalog, behavior-preserving transformations                   | [../Shared Agents/refactoring-expert-agent.md](../Shared%20Agents/refactoring-expert-agent.md) |
+| Clean Code Expert Agent  | Clean code, SOLID, KISS, naming, cohesion, no over-engineering             | [../Shared Agents/clean-code-expert-agent.md](../Shared%20Agents/clean-code-expert-agent.md)   |
+| Microsoft Agent          | .NET 10, ASP.NET Core, EF Core, xUnit, MIT-licensed packages               | [agents/microsoft-practices-agent.md](agents/microsoft-practices-agent.md)                     |
+| Product Expert Agent     | Business rule catalogue (immutable after Phase 2 approval)                 | [../Shared Agents/product-expert-agent.md](../Shared%20Agents/product-expert-agent.md)         |
+| QA Agent                 | End-to-end manual test cases, workflow maps, UAT sign-off                  | [../Shared Agents/qa-agent.md](../Shared%20Agents/qa-agent.md)                                 |
+| Code Historian Agent     | BR catalogue guardian; immutable change chronicle; peer review enforcement | [../Shared Agents/code-historian-agent.md](../Shared%20Agents/code-historian-agent.md)         |
+| Documentation Agent      | /docs folder; Azure DevOps wiki; metrics, dependencies, external systems   | [../Shared Agents/documentation-agent.md](../Shared%20Agents/documentation-agent.md)           |
 
 ---
 
 ## Workflow
 
-See [workflow.md](workflow.md) for the complete orchestration flow, decision gates, and agent communication protocols.
+See [../Shared Agents/workflow.md](../Shared%20Agents/workflow.md) for the complete orchestration flow, decision gates, and agent communication protocols.
 
-See [peer-review-protocol.md](peer-review-protocol.md) for the mandatory peer review process, debate rules, commit cadence, and rollback protocol that apply to every code change.
+See [../Shared Agents/peer-review-protocol.md](../Shared%20Agents/peer-review-protocol.md) for the mandatory peer review process, debate rules, commit cadence, and rollback protocol that apply to every code change.
 
 ---
 

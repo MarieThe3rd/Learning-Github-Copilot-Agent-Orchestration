@@ -144,6 +144,7 @@ flowchart TD
 | NetArchTest.Rules                       | 1.x     | MIT      | Architecture conformance tests       | No commercial license fee |
 | Testcontainers.MsSql                    | 3.x     | MIT      | SQL Server containers for int. tests | MIT licensed              |
 | Serilog.AspNetCore                      | 9.x     | Apache 2 | Structured logging                   | Open source; permissive   |
+| Serilog.Sinks.Http                      | 9.x     | Apache 2 | Ship logs to logz.io over HTTP       | Open source; permissive   |
 
 > Rule: No package with a commercial or per-developer license fee. All packages must be MIT,
 > Apache 2.0, or equivalent. Specifically prohibited: MediatR, FluentAssertions, AutoMapper.

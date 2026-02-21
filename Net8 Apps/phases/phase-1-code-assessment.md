@@ -35,16 +35,17 @@ Phase 1 is complete when **all** of the following are true:
 
 ## Agents Active in Phase 1
 
-| Agent                         | Role                                                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------ |
-| **Blazor Expert Agent**       | Leads (Blazor apps) — inventory components, identify code-behind coupling, map state |
-| **Console App Expert Agent**  | Leads (console apps) — inventory services, workers, map Generic Host registration    |
-| **Clean Code Expert Agent**   | Leads — identify and remove dead code; flag all code style violations                |
-| **Refactoring Expert Agent**  | Advisory — validate that dead code removals are safe and behavior-preserving         |
-| **Architect Agent**           | Advisory — identify structural concerns that will affect Phase 3 slice boundaries    |
-| **Microsoft Practices Agent** | Advisory — flag non-idiomatic .NET 8 patterns (service-locator, manual DI, etc.)     |
-| **Code Historian Agent**      | Records every CHR-NNN entry for approved changes                                     |
-| **Orchestrator**              | Tracks inventory progress; routes tasks; enforces gate                               |
+| Agent                                 | Role                                                                                         |
+| ------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Legacy Code Expert Agent (.NET 8)** | Primary — identify coupling hotspots; design and introduce seams for all HIGH/CRITICAL items |
+| **Blazor Expert Agent**               | Primary (Blazor apps) — inventory components, identify code-behind coupling, map state       |
+| **Console App Expert Agent**          | Primary (console apps) — inventory services, workers, map Generic Host registration          |
+| **Clean Code Expert Agent**           | Primary — identify and remove dead code; flag all code style violations                      |
+| **Refactoring Expert Agent**          | Advisory — validate that seam introductions and dead code removals are behavior-preserving   |
+| **Architect Agent**                   | Advisory — identify structural concerns that will affect Phase 3 slice boundaries            |
+| **Microsoft Practices Agent**         | Advisory — flag non-idiomatic .NET 8 patterns (service-locator, manual DI, etc.)             |
+| **Code Historian Agent**              | Records every CHR-NNN entry for approved changes                                             |
+| **Orchestrator**                      | Tracks inventory progress; routes tasks; enforces gate                                       |
 
 ---
 
@@ -143,13 +144,19 @@ COUPLING HOTSPOTS
 
 ---
 
-## Seam Introduction (Exceptional Cases Only)
+## Seam Introduction
 
-If a class is so tightly coupled that Phase 2 testing would be impossible without a seam, the Orchestrator may approve seam introduction in Phase 1. This requires:
+Seam introduction is a **standard Phase 1 activity** for .NET 8 apps, not an exception. After the coupling hotspot report is produced, the **Legacy Code Expert Agent (.NET 8)** leads seam work for all HIGH and CRITICAL priority hotspots. Phase 1 cannot be gated until these seams exist.
 
-1. Refactoring Expert Agent confirms the coupling blocks all test approaches
-2. Refactoring Expert Agent proposes a specific, minimal seam
-3. All coding agents approve
-4. Change is the smallest possible seam — typically extracting one interface
+**Process for each HIGH/CRITICAL hotspot:**
 
-Any seam introduced in Phase 1 is recorded with a `[SEAM]` tag in the CHR entry.
+1. Legacy Code Expert Agent identifies the coupling type (missing interface, static helper, newed-up dependency, direct `new HttpClient()`, etc.)
+2. Legacy Code Expert Agent proposes the minimum interface and constructor change
+3. Refactoring Expert Agent confirms the change is behavior-preserving
+4. All coding agents approve per [`../../Shared Agents/peer-review-protocol.md`](../../Shared%20Agents/peer-review-protocol.md)
+5. DI registration is updated in Program.cs
+6. Change is committed: `[PHASE-1] [CHR-NNN] Extract IEmailService from OrderProcessingService`
+
+MEDIUM priority hotspots (injectable but no interface) may be deferred to Phase 2 setup if the Orchestrator agrees. LOW priority items are never a Phase 1 gate blocker.
+
+All seams introduced in Phase 1 are recorded with a `[SEAM]` tag in the CHR entry.

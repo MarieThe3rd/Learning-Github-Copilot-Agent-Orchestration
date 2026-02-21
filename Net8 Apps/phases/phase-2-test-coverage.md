@@ -171,3 +171,34 @@ Pattern:
 2. Refactoring Expert approves as behavior-preserving
 3. Clean Code Expert approves naming
 4. Extract, register in DI, commit: `[PHASE-2] [CHR-NNN] Extract IOrderRepository from OrderRepository`
+
+---
+
+## Characterization Tests
+
+When exercising a code path reveals behavior that is unclear, suspected to be wrong, or is complex enough that it must not regress through Phase 3, write a **characterization test** alongside the regular unit tests.
+
+A characterization test documents what the code _currently does_ — not what it _should_ do. It is the safety net that lets Phase 3 restructure the code confidently.
+
+```csharp
+[Fact]
+public void OrderCalculationService_Calculate_CharacterizesCurrentDiscountBehavior()
+{
+    // CHARACTERIZATION TEST — documents existing behavior.
+    // Do NOT change the assertion without Product Expert Agent approval and a BR-NNN update.
+    var options = Options.Create(new BillingOptions { LateFeePercentage = 1.5m });
+    var sut = new OrderCalculationService(options);
+
+    var result = sut.Calculate(new Order { Subtotal = 250m, Region = "EU" });
+
+    Assert.Equal(302.50m, result.TotalDue);
+    // NOTE: discount applies before tax — flagged for domain review. See ESC-012.
+}
+```
+
+**Rules for characterization tests:**
+
+- Mark the test body with `// CHARACTERIZATION TEST` so its intent is visible
+- Never assert “what it should do” — assert the exact current output, even if it looks wrong
+- Add a `// NOTE:` comment whenever something seems incorrect — flag it for Product Expert Agent
+- Any change to a characterization test assertion must be approved by Product Expert Agent and result in a BR-NNN update or a confirmed bug entry
