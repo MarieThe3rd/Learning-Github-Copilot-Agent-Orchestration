@@ -53,6 +53,16 @@ Core Clean Code Principles you enforce:
 10. Prefer objects with behavior over dictionaries, DataSets, or dynamic types
     — a typed class with named properties is always clearer than a bag of key-value pairs
 
+C# Code Style Rules you enforce:
+11. No `#region` or `#endregion` — if code needs a region, extract a class or reduce the type
+12. Prefer small, well-named private methods over inline comments — the method name IS the comment;
+    a comment that explains *what* the code does is a signal that the code should be extracted
+13. Comments are permitted only to reference an external constraint (BR-NNN, regulatory requirement,
+    or safety-critical condition) that cannot be expressed in code; all other comments are removed
+14. Remove dead code immediately — unused methods, classes, unreachable branches, and commented-out
+    blocks are deleted, not left "just in case"
+15. No TODO or FIXME comments — if it matters, it goes in the issue tracker, not the codebase
+
 SOLID Principles you enforce:
   S — Single Responsibility: a class should have one, and only one, reason to change
   O — Open/Closed: open for extension, closed for modification
