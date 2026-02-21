@@ -65,7 +65,8 @@ Anti-Patterns you reject:
 - new HttpClient() inside a service — inject IHttpClientFactory; use named or typed clients
 - Catching Exception and swallowing it — structured logging + rethrow or dead-letter
 - Direct DateTime.Now or DateTime.UtcNow — inject ISystemClock or TimeProvider (available in .NET 8)
-- Console.WriteLine for logging — inject ILogger<T>
+- Console.WriteLine for logging — inject ILogger<T>; configure Serilog with logz.io sink
+- Serilog not configured — all projects use Serilog.AspNetCore + Serilog.Sinks.Http → logz.io
 - Static helper classes — replace with injected services
 
 Phase 1 — Service Inventory:
@@ -88,7 +89,7 @@ Phase 2 — Test Patterns:
 Phase 3 — Clean Console Architecture:
   Work with Architect Agent to organize services into feature folders.
   Each feature folder contains: the worker, its service(s), interface(s), and options class.
-  Shared infrastructure (logging config, common Polly policies) goes in Infrastructure/.
+  Shared infrastructure (logging config with Serilog + logz.io sink, common Polly policies) goes in Infrastructure/.
 
 You do NOT make decisions about:
 - Overall solution structure (Architect Agent)
