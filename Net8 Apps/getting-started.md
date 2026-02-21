@@ -8,11 +8,11 @@ This guide is for a developer who wants to use this agent system to modernize a 
 
 The Web Forms system focuses on making untestable code testable by introducing seams. The .NET 8 system focuses on code quality, test coverage, and architecture — the apps are already on modern .NET.
 
-| Web Forms System                                             | .NET 8 System                                             |
-| ------------------------------------------------------------ | --------------------------------------------------------- |
-| Phase 1: Introduce seams (break HttpContext/DB coupling)     | Phase 1: Assess codebase, remove dead code, enforce style |
-| Phase 2: Write characterization tests (pin current behavior) | Phase 2: Write unit/integration/component tests           |
-| Phase 3: Migrate to .NET 10, clean architecture              | Phase 3: Enforce Vertical Slice Architecture, clean code  |
+| Web Forms System                                             | .NET 8 System                                                     |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Phase 1: Introduce seams (break HttpContext/DB coupling)     | Phase 1: Assess codebase + introduce seams for missing DI/statics |
+| Phase 2: Write characterization tests (pin current behavior) | Phase 2: Write unit/integration/component tests                   |
+| Phase 3: Migrate to .NET 10, clean architecture              | Phase 3: Enforce VSA, clean code, upgrade to .NET 10              |
 
 ---
 
@@ -94,9 +94,25 @@ Analyze this component: #file:Pages/Orders/OrderList.razor
 
 ---
 
-## Step 5 — Dead Code Removal and Style Cleanup
+## Step 5 — Introduce Seams Using the Legacy Code Expert Agent
 
-The Orchestrator will route these tasks to the **Clean Code Expert Agent** ([`../Net48 WebForms/agents/clean-code-expert-agent.md`](../Net48%20WebForms/agents/clean-code-expert-agent.md)).
+When the inventory reveals coupling hotspots — services newed-up inside business logic, static helpers, direct `new HttpClient()`, or services injected as concrete types — the Orchestrator routes seam introduction to the **Legacy Code Expert Agent (.NET 8)** ([`agents/legacy-code-expert-agent.md`](agents/legacy-code-expert-agent.md)).
+
+Open a new Copilot Chat tab, load the Legacy Code Expert system prompt, and give it the coupling problem:
+
+> _"This service directly instantiates EmailService and reads config via magic strings. Introduce the minimum seams to make it testable. Here is the class: #file:Services/OrderProcessingService.cs"_
+
+The agent returns the interface definition, the updated constructor, and the DI registration change for Program.cs. Each seam is its own commit after peer review:
+
+```bash
+git commit -m "[PHASE-1] [CHR-002] Extract IEmailService from OrderProcessingService"
+```
+
+---
+
+## Step 6 — Dead Code Removal and Style Cleanup
+
+The Orchestrator will route these tasks to the **Clean Code Expert Agent** ([`../Shared Agents/clean-code-expert-agent.md`](../Shared%20Agents/clean-code-expert-agent.md)).
 
 For each dead code item:
 
@@ -110,7 +126,37 @@ git commit -m "[PHASE-1] [CHR-001] Remove unused OrderHistoryArchiver class"
 
 ---
 
-## Step 6 — Phase 2: Writing Tests
+## Step 7 — Peer Review and Code Historian
+
+Every proposed change — in any phase — follows this loop before it can be committed. The full process is defined in [`../Shared Agents/peer-review-protocol.md`](../Shared%20Agents/peer-review-protocol.md).
+
+**Peer review in practice:**
+
+1. The Orchestrator names the reviewing agents required
+2. Open a new Copilot Chat tab for each reviewer — load their system prompt
+3. Paste the proposed change and ask:
+
+> _"Please review this proposed interface extraction for correctness. [paste diff or code]"_
+
+4. The agent returns **Approved**, **Requested Change**, or **Objection**
+5. Paste the result back to the Orchestrator; resolve any issues; re-review if needed
+6. Once approved: commit the change (one change = one commit)
+
+**Log with the Code Historian:**
+
+Every approved, committed change must be recorded. Open a new tab, load the Code Historian system prompt from [`../Shared Agents/code-historian-agent.md`](../Shared%20Agents/code-historian-agent.md), and say:
+
+> _"Log this change. Before: [original code]. After: [new code]. Proposed by: Legacy Code Expert Agent (.NET 8). Approved by: Refactoring Expert Agent."_
+
+Include the CHR number in your commit message:
+
+```bash
+git commit -m "[PHASE-1] [CHR-002] Extract IEmailService from OrderProcessingService"
+```
+
+---
+
+## Step 8 — Phase 2: Writing Tests
 
 Once Phase 1 is signed off, create a new branch:
 
@@ -132,9 +178,9 @@ Each test references the business rule it protects (BR-NNN).
 
 ---
 
-## Step 7 — Business Rule Discovery
+## Step 9 — Business Rule Discovery
 
-While writing tests, the **Product Expert Agent** ([`../Net48 WebForms/agents/product-expert-agent.md`](../Net48%20WebForms/agents/product-expert-agent.md)) is brought in to name and catalogue every rule the tests reveal.
+While writing tests, the **Product Expert Agent** ([`../Shared Agents/product-expert-agent.md`](../Shared%20Agents/product-expert-agent.md)) is brought in to name and catalogue every rule the tests reveal.
 
 Paste the test output to the Orchestrator and say:
 
@@ -144,7 +190,7 @@ Each confirmed rule gets a BR-NNN identifier and a CHR-NNN log entry.
 
 ---
 
-## Step 8 — Phase 3: Clean Architecture
+## Step 10 — Phase 3: Clean Architecture
 
 Create a new branch:
 
@@ -158,7 +204,7 @@ The Orchestrator drives the slice extraction. Every file move is its own commit:
 git commit -m "[PHASE-3] [CHR-042] Move OrderService to Features/Orders/"
 ```
 
-The **Architect Agent** ([`../Net48 WebForms/agents/architect-agent.md`](../Net48%20WebForms/agents/architect-agent.md)) defines the target folder structure. Nothing moves without its approval.
+The **Architect Agent** ([`../Shared Agents/architect-agent.md`](../Shared%20Agents/architect-agent.md)) defines the target folder structure. Nothing moves without its approval.
 
 ---
 
@@ -186,24 +232,25 @@ The **Architect Agent** ([`../Net48 WebForms/agents/architect-agent.md`](../Net4
 
 ### Agents in This Folder
 
-| Agent                 | File                                                                       | When to use                      |
-| --------------------- | -------------------------------------------------------------------------- | -------------------------------- |
-| Orchestrator (.NET 8) | [`orchestrator.md`](orchestrator.md)                                       | Always open — master controller  |
-| Blazor Expert         | [`agents/blazor-expert-agent.md`](agents/blazor-expert-agent.md)           | Blazor apps — all phases         |
-| Console App Expert    | [`agents/console-app-expert-agent.md`](agents/console-app-expert-agent.md) | Console/worker apps — all phases |
+| Agent                        | File                                                                         | When to use                                    |
+| ---------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------- |
+| Orchestrator (.NET 8)        | [`orchestrator.md`](orchestrator.md)                                         | Always open — master controller                |
+| Legacy Code Expert (.NET 8)  | [`agents/legacy-code-expert-agent.md`](agents/legacy-code-expert-agent.md)   | Seam analysis, missing DI, static coupling     |
+| Microsoft Practices (.NET 8) | [`agents/microsoft-practices-agent.md`](agents/microsoft-practices-agent.md) | .NET 8/10 patterns, EF Core, Serilog decisions |
+| Blazor Expert                | [`agents/blazor-expert-agent.md`](agents/blazor-expert-agent.md)             | Blazor apps — all phases                       |
+| Console App Expert           | [`agents/console-app-expert-agent.md`](agents/console-app-expert-agent.md)   | Console/worker apps — all phases               |
 
-### Reused Agents (load from Net48 WebForms folder)
+### Shared Agents (load from Shared Agents folder)
 
-| Agent               | File                                                                                                               |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Refactoring Expert  | [`../Net48 WebForms/agents/refactoring-expert-agent.md`](../Net48%20WebForms/agents/refactoring-expert-agent.md)   |
-| Clean Code Expert   | [`../Net48 WebForms/agents/clean-code-expert-agent.md`](../Net48%20WebForms/agents/clean-code-expert-agent.md)     |
-| Architect           | [`../Net48 WebForms/agents/architect-agent.md`](../Net48%20WebForms/agents/architect-agent.md)                     |
-| Microsoft Practices | [`../Net48 WebForms/agents/microsoft-practices-agent.md`](../Net48%20WebForms/agents/microsoft-practices-agent.md) |
-| Product Expert      | [`../Net48 WebForms/agents/product-expert-agent.md`](../Net48%20WebForms/agents/product-expert-agent.md)           |
-| QA Agent            | [`../Net48 WebForms/agents/qa-agent.md`](../Net48%20WebForms/agents/qa-agent.md)                                   |
-| Code Historian      | [`../Net48 WebForms/agents/code-historian-agent.md`](../Net48%20WebForms/agents/code-historian-agent.md)           |
-| Documentation       | [`../Net48 WebForms/agents/documentation-agent.md`](../Net48%20WebForms/agents/documentation-agent.md)             |
+| Agent              | File                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| Refactoring Expert | [`../Shared Agents/refactoring-expert-agent.md`](../Shared%20Agents/refactoring-expert-agent.md) |
+| Clean Code Expert  | [`../Shared Agents/clean-code-expert-agent.md`](../Shared%20Agents/clean-code-expert-agent.md)   |
+| Architect          | [`../Shared Agents/architect-agent.md`](../Shared%20Agents/architect-agent.md)                   |
+| Product Expert     | [`../Shared Agents/product-expert-agent.md`](../Shared%20Agents/product-expert-agent.md)         |
+| QA Agent           | [`../Shared Agents/qa-agent.md`](../Shared%20Agents/qa-agent.md)                                 |
+| Code Historian     | [`../Shared Agents/code-historian-agent.md`](../Shared%20Agents/code-historian-agent.md)         |
+| Documentation      | [`../Shared Agents/documentation-agent.md`](../Shared%20Agents/documentation-agent.md)           |
 
 ---
 
@@ -218,3 +265,12 @@ The **Architect Agent** ([`../Net48 WebForms/agents/architect-agent.md`](../Net4
 | Writing tests and refactoring in the same change | Tests first, green, commit — then refactor         |
 | Asking the Architect Agent to write code         | It defines structure; coding agents implement      |
 | Adding `#region` blocks                          | Extract a class or method instead                  |
+
+---
+
+## Where to Go Next
+
+- **Phase details:** [`phases/`](phases/) — gate checklists for each phase
+- **Peer review rules:** [`../Shared Agents/peer-review-protocol.md`](../Shared%20Agents/peer-review-protocol.md)
+- **Agent communication model:** [`../Shared Agents/workflow.md`](../Shared%20Agents/workflow.md)
+- **Full system overview:** [`README.md`](README.md)
