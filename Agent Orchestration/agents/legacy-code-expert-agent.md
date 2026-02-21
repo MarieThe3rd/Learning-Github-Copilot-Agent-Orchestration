@@ -8,6 +8,15 @@ This agent owns all decisions related to **making untestable legacy code testabl
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Seam detection and characterization test writing require deep reading of legacy C# code with nuanced judgment about what is safe to change. A strong code-reasoning model avoids over-refactoring.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```

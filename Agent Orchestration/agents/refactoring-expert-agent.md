@@ -10,11 +10,20 @@ This agent owns all decisions about **which refactoring to apply, in what order,
 
 ## Role in the Pipeline
 
-| Phase   | Responsibility                                                                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Phase   | Responsibility                                                                                                                                                   |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Phase 1 | Advise which preparatory refactorings enable seam introduction without breaking behavior; validate that Legacy Code Expert Agent changes are behavior-preserving |
-| Phase 2 | Identify structural patterns in legacy code that reveal hidden business rules (e.g., a long method that is really several policies)                    |
-| Phase 3 | Drive the primary refactoring roadmap from testable legacy to clean .NET 10 architecture; select and sequence refactoring catalog entries              |
+| Phase 2 | Identify structural patterns in legacy code that reveal hidden business rules (e.g., a long method that is really several policies)                              |
+| Phase 3 | Drive the primary refactoring roadmap from testable legacy to clean .NET 10 architecture; select and sequence refactoring catalog entries                        |
+
+---
+
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Refactoring catalog application requires precise mechanical reasoning about C# syntax transformations and behavior equivalence. Strong code comprehension is the primary requirement.
+
+> Update this to a more current model as needed.
 
 ---
 

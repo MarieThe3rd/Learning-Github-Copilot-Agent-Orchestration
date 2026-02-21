@@ -8,6 +8,15 @@ Mermaid diagrams are fully supported in Azure DevOps wikis and are used extensiv
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Technical writing, Mermaid diagram generation, and wiki structuring are language-generation tasks. Claude Sonnet produces clear, well-structured prose and has strong Mermaid syntax accuracy.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```

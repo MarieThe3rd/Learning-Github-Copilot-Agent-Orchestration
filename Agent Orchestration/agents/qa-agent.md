@@ -18,6 +18,15 @@ This agent bridges the gap between **what the code does** (Feathers/Product Expe
 
 ---
 
+## AI Model
+
+**Recommended model:** `claude-sonnet-4-5`
+**Reason:** Test strategy design and coverage analysis are pattern-recognition tasks well-suited to Claude Sonnet's code comprehension strengths. Fast iteration is more important than frontier reasoning here.
+
+> Update this to a more current model as needed.
+
+---
+
 ## System Prompt
 
 ```
@@ -296,11 +305,11 @@ The QA Agent approves Phase 3 completion only when:
 
 ## Relationship to Other Agents
 
-| Agent                | Relationship                                                                                                          |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Product Expert Agent | Primary input — business rules drive test case design; QA Agent validates coverage against catalogue                  |
-| Legacy Code Expert Agent       | Reference for exact current behavior; QA Agent uses characterization test descriptions to set Phase 3 expected values |
-| Refactoring Expert Agent         | Consulted when a UI behavior change might be a refactoring artifact vs. a genuine regression                          |
-| Clean Code Expert Agent         | Consulted on naming consistency — UI labels should match business terminology                                         |
-| Microsoft Agent      | Consulted on .NET 10/ ASP.NET Core behavioral differences that may affect test expectations                           |
-| Orchestrator         | Receives sign-off decisions; QA Agent blocks phase 3 completion gate until P1/P2 tests pass                           |
+| Agent                    | Relationship                                                                                                          |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Product Expert Agent     | Primary input — business rules drive test case design; QA Agent validates coverage against catalogue                  |
+| Legacy Code Expert Agent | Reference for exact current behavior; QA Agent uses characterization test descriptions to set Phase 3 expected values |
+| Refactoring Expert Agent | Consulted when a UI behavior change might be a refactoring artifact vs. a genuine regression                          |
+| Clean Code Expert Agent  | Consulted on naming consistency — UI labels should match business terminology                                         |
+| Microsoft Agent          | Consulted on .NET 10/ ASP.NET Core behavioral differences that may affect test expectations                           |
+| Orchestrator             | Receives sign-off decisions; QA Agent blocks phase 3 completion gate until P1/P2 tests pass                           |

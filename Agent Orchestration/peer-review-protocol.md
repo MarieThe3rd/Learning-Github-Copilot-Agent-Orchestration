@@ -105,8 +105,8 @@ When an agent raises an `❌ Objection`, debate proceeds as follows:
 
 1. **Each agent states their position in one paragraph** — clear claim + rationale
 2. **Each agent responds to the other positions** — acknowledge valid points, rebut invalid ones
-3. **Agents may change their position** — changing your position when presented with a better argument is correct behaviour, not weakness
-4. **Orchestrator summarises** the state of agreement after each round
+3. **Agents may change their position** — changing your position when presented with a better argument is correct behavior, not weakness
+4. **Orchestrator summarizes** the state of agreement after each round
 5. **Maximum two debate rounds** before Orchestrator decides unilaterally
 6. **Orchestrator's decision is final** — reason is logged; all agents acknowledge and proceed
 
@@ -132,7 +132,7 @@ These rules are enforced by the Orchestrator and verified by the Code Historian 
 | All existing tests green before commit                         | Code Historian requires test run result in CHR entry                   |
 | Test written before or alongside code change                   | Refactoring Expert and Clean Code Expert verify in review              |
 | No change larger than can be reviewed in a single review round | Legacy Code Expert can request a split; proposer must comply           |
-| Rollback is always possible                                    | Each commit must be independently revertable with `git revert`         |
+| Rollback is always possible                                    | Each commit must be independently revertible with `git revert`         |
 
 ### Commit Size Guidelines
 
@@ -144,6 +144,18 @@ These rules are enforced by the Orchestrator and verified by the Code Historian 
 | Add one slice (Request + Response + Validator + Handler) | 1 commit per file, or 1 commit for the whole slice if all files are new |
 | Migrate one Web Forms page to Razor Page                 | 1 commit                                                                |
 | Add EF Core entity configuration for one table           | 1 commit                                                                |
+
+---
+
+### Branch Rules
+
+| Rule                                                                         | Enforcement                                                           |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Never commit directly to main or master                                      | Orchestrator rejects any review that targets the default branch       |
+| Create a feature branch at the start of every work session                   | Branch is created before the first file is changed                    |
+| Branch naming: `[phase-N]-[brief-description]` or descriptive kebab-case     | Reviewers check branch name before accepting the PR                   |
+| Each branch covers one logical unit of work (one class, one slice, one seam) | Legacy Code Expert or Refactoring Expert can request a split          |
+| Merge only after all coding agents have approved and CHR-NNN is logged       | Code Historian confirms entry exists; Orchestrator approves the merge |
 
 ---
 
