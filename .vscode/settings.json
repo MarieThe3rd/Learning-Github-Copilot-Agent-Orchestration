@@ -1,13 +1,24 @@
 {
   "cSpell.words": [
+    "ascx",
     "aspx",
     "btn",
+    "bUnit",
     "csharp",
+    "Fluxor",
     "ints",
     "Liskov",
+    "Moq",
+    "MsSql",
     "modernization",
+    "NSubstitute",
+    "Orch",
+    "postback",
     "refactorings",
+    "Sainty",
+    "Serilog",
     "SqlCommand",
-    "Superclass"
+    "Superclass",
+    "Testcontainers"
   ]
 }

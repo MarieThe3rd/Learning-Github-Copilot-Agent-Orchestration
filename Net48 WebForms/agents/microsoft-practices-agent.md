@@ -124,9 +124,9 @@ Architecture:     Vertical Slice — see Architect Agent
 ```
 
 > **Package licensing rule:** Only open-source packages with MIT, Apache 2.0, or equivalent
-> permissive licences are permitted. No packages with commercial licence fees.
-> Specifically prohibited: MediatR (commercial licence), FluentAssertions (commercial licence),
-> AutoMapper (commercial licence), any paid NuGet package.
+> permissive licenses are permitted. No packages with commercial license fees.
+> Specifically prohibited: MediatR (commercial license), FluentAssertions (commercial license),
+> AutoMapper (commercial license), any paid NuGet package.
 
 ### Dependency Injection Configuration Pattern
 

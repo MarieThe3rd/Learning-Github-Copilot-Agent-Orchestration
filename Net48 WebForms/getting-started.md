@@ -54,7 +54,7 @@ The model will confirm it has taken on the Orchestrator role. A response like th
 
 > _"We are starting Phase 1. The codebase is a legacy ASP.NET Web Forms application targeting .NET 4.8. It has zero tests. I need to begin the class inventory."_
 
-The Orchestrator will issue its first task: usually asking the **Legacy Code Expert Agent** to analyse a specific class.
+The Orchestrator will issue its first task: usually asking the **Legacy Code Expert Agent** to analyze a specific class.
 
 ---
 
@@ -62,7 +62,7 @@ The Orchestrator will issue its first task: usually asking the **Legacy Code Exp
 
 When the Orchestrator says something like:
 
-> _"Task for Legacy Code Expert Agent: analyse `CustomerOrderProcessor.cs` for seams."_
+> _"Task for Legacy Code Expert Agent: analyze `CustomerOrderProcessor.cs` for seams."_
 
 1. Open a **new Copilot Chat tab** (click `+` in the chat panel)
 2. Open the relevant agent file (e.g., [`agents/legacy-code-expert-agent.md`](agents/legacy-code-expert-agent.md))
@@ -71,7 +71,7 @@ When the Orchestrator says something like:
 
 You now have the Legacy Code Expert Agent active. Give it the task:
 
-> _"Analyse `CustomerOrderProcessor.cs` for seams. Here is the class: [paste code or use `#file:CustomerOrderProcessor.cs`]"_
+> _"Analyze `CustomerOrderProcessor.cs` for seams. Here is the class: [paste code or use `#file:CustomerOrderProcessor.cs`]"_
 
 ### Referencing files without copy-pasting
 
@@ -153,7 +153,7 @@ git commit -m "[PHASE-1] [CHR-001] Extract ICustomerRepository from CustomerOrde
 
 When you think Phase 1 is complete, return to the Orchestrator session and say:
 
-> _"All classes have been analysed and seamed. Please evaluate the Phase 1 gate."_
+> _"All classes have been analyzed and seamed. Please evaluate the Phase 1 gate."_
 
 The Orchestrator will run through the gate checklist from [`phases/phase-1-safe-refactoring.md`](phases/phase-1-safe-refactoring.md) and tell you what remains before you can advance to Phase 2.
 
