@@ -149,13 +149,13 @@ These rules are enforced by the Orchestrator and verified by the Code Historian 
 
 ### Branch Rules
 
-| Rule                                                                          | Enforcement                                                             |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Never commit directly to main or master                                       | Orchestrator rejects any review that targets the default branch         |
-| Create a feature branch at the start of every work session                   | Branch is created before the first file is changed                      |
-| Branch naming: `[phase-N]-[brief-description]` or descriptive kebab-case     | Reviewers check branch name before accepting the PR                     |
-| Each branch covers one logical unit of work (one class, one slice, one seam) | Legacy Code Expert or Refactoring Expert can request a split            |
-| Merge only after all coding agents have approved and CHR-NNN is logged        | Code Historian confirms entry exists; Orchestrator approves the merge   |
+| Rule                                                                         | Enforcement                                                           |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Never commit directly to main or master                                      | Orchestrator rejects any review that targets the default branch       |
+| Create a feature branch at the start of every work session                   | Branch is created before the first file is changed                    |
+| Branch naming: `[phase-N]-[brief-description]` or descriptive kebab-case     | Reviewers check branch name before accepting the PR                   |
+| Each branch covers one logical unit of work (one class, one slice, one seam) | Legacy Code Expert or Refactoring Expert can request a split          |
+| Merge only after all coding agents have approved and CHR-NNN is logged       | Code Historian confirms entry exists; Orchestrator approves the merge |
 
 ---
 

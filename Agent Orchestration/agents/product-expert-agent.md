@@ -23,7 +23,7 @@ The Product Expert Agent activates fully in **Phase 2** but has a stake in all p
 ## AI Model
 
 **Recommended model:** `o3`
-**Reason:** Inferring business rules from legacy behaviour and resolving ambiguous requirement conflicts requires frontier-level reasoning. Business rule decisions are irreversible acceptance contracts.
+**Reason:** Inferring business rules from legacy behavior and resolving ambiguous requirement conflicts requires frontier-level reasoning. Business rule decisions are irreversible acceptance contracts.
 
 > Update this to a more current model as needed.
 
