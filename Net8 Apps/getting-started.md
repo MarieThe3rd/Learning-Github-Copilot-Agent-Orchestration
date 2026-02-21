@@ -1,6 +1,6 @@
 # Getting Started — .NET 8 Application Modernization with Agent Orchestration
 
-This guide is for a developer who wants to use this agent system to modernize a **.NET 8 console app** or **.NET 8 Blazor app**. If you are migrating a legacy ASP.NET Web Forms (.NET 4.8) application, refer to the [Agent Orchestration getting-started guide](../Agent%20Orchestration/getting-started.md) instead.
+This guide is for a developer who wants to use this agent system to modernize a **.NET 8 console app** or **.NET 8 Blazor app**. If you are migrating a legacy ASP.NET Web Forms (.NET 4.8) application, refer to the [Net48 WebForms getting-started guide](../Net48%20WebForms/getting-started.md) instead.
 
 ---
 
@@ -96,7 +96,7 @@ Analyze this component: #file:Pages/Orders/OrderList.razor
 
 ## Step 5 — Dead Code Removal and Style Cleanup
 
-The Orchestrator will route these tasks to the **Clean Code Expert Agent** ([`../Agent Orchestration/agents/clean-code-expert-agent.md`](../Agent%20Orchestration/agents/clean-code-expert-agent.md)).
+The Orchestrator will route these tasks to the **Clean Code Expert Agent** ([`../Net48 WebForms/agents/clean-code-expert-agent.md`](../Net48%20WebForms/agents/clean-code-expert-agent.md)).
 
 For each dead code item:
 
@@ -134,7 +134,7 @@ Each test references the business rule it protects (BR-NNN).
 
 ## Step 7 — Business Rule Discovery
 
-While writing tests, the **Product Expert Agent** ([`../Agent Orchestration/agents/product-expert-agent.md`](../Agent%20Orchestration/agents/product-expert-agent.md)) is brought in to name and catalogue every rule the tests reveal.
+While writing tests, the **Product Expert Agent** ([`../Net48 WebForms/agents/product-expert-agent.md`](../Net48%20WebForms/agents/product-expert-agent.md)) is brought in to name and catalogue every rule the tests reveal.
 
 Paste the test output to the Orchestrator and say:
 
@@ -158,7 +158,7 @@ The Orchestrator drives the slice extraction. Every file move is its own commit:
 git commit -m "[PHASE-3] [CHR-042] Move OrderService to Features/Orders/"
 ```
 
-The **Architect Agent** ([`../Agent Orchestration/agents/architect-agent.md`](../Agent%20Orchestration/agents/architect-agent.md)) defines the target folder structure. Nothing moves without its approval.
+The **Architect Agent** ([`../Net48 WebForms/agents/architect-agent.md`](../Net48%20WebForms/agents/architect-agent.md)) defines the target folder structure. Nothing moves without its approval.
 
 ---
 
@@ -192,18 +192,18 @@ The **Architect Agent** ([`../Agent Orchestration/agents/architect-agent.md`](..
 | Blazor Expert         | [`agents/blazor-expert-agent.md`](agents/blazor-expert-agent.md)           | Blazor apps — all phases         |
 | Console App Expert    | [`agents/console-app-expert-agent.md`](agents/console-app-expert-agent.md) | Console/worker apps — all phases |
 
-### Reused Agents (load from Agent Orchestration folder)
+### Reused Agents (load from Net48 WebForms folder)
 
-| Agent               | File                                                                                                                         |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Refactoring Expert  | [`../Agent Orchestration/agents/refactoring-expert-agent.md`](../Agent%20Orchestration/agents/refactoring-expert-agent.md)   |
-| Clean Code Expert   | [`../Agent Orchestration/agents/clean-code-expert-agent.md`](../Agent%20Orchestration/agents/clean-code-expert-agent.md)     |
-| Architect           | [`../Agent Orchestration/agents/architect-agent.md`](../Agent%20Orchestration/agents/architect-agent.md)                     |
-| Microsoft Practices | [`../Agent Orchestration/agents/microsoft-practices-agent.md`](../Agent%20Orchestration/agents/microsoft-practices-agent.md) |
-| Product Expert      | [`../Agent Orchestration/agents/product-expert-agent.md`](../Agent%20Orchestration/agents/product-expert-agent.md)           |
-| QA Agent            | [`../Agent Orchestration/agents/qa-agent.md`](../Agent%20Orchestration/agents/qa-agent.md)                                   |
-| Code Historian      | [`../Agent Orchestration/agents/code-historian-agent.md`](../Agent%20Orchestration/agents/code-historian-agent.md)           |
-| Documentation       | [`../Agent Orchestration/agents/documentation-agent.md`](../Agent%20Orchestration/agents/documentation-agent.md)             |
+| Agent               | File                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Refactoring Expert  | [`../Net48 WebForms/agents/refactoring-expert-agent.md`](../Net48%20WebForms/agents/refactoring-expert-agent.md)   |
+| Clean Code Expert   | [`../Net48 WebForms/agents/clean-code-expert-agent.md`](../Net48%20WebForms/agents/clean-code-expert-agent.md)     |
+| Architect           | [`../Net48 WebForms/agents/architect-agent.md`](../Net48%20WebForms/agents/architect-agent.md)                     |
+| Microsoft Practices | [`../Net48 WebForms/agents/microsoft-practices-agent.md`](../Net48%20WebForms/agents/microsoft-practices-agent.md) |
+| Product Expert      | [`../Net48 WebForms/agents/product-expert-agent.md`](../Net48%20WebForms/agents/product-expert-agent.md)           |
+| QA Agent            | [`../Net48 WebForms/agents/qa-agent.md`](../Net48%20WebForms/agents/qa-agent.md)                                   |
+| Code Historian      | [`../Net48 WebForms/agents/code-historian-agent.md`](../Net48%20WebForms/agents/code-historian-agent.md)           |
+| Documentation       | [`../Net48 WebForms/agents/documentation-agent.md`](../Net48%20WebForms/agents/documentation-agent.md)             |
 
 ---
 

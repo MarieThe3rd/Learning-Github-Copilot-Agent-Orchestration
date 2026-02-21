@@ -37,7 +37,7 @@ Agent
 
 | Type               | Description                                 | Example                                                                            |
 | ------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| **Task**           | Orchestrator assigns work to an agent       | "Legacy Code Expert Agent: analyse CustomerOrderProcessor for seams"               |
+| **Task**           | Orchestrator assigns work to an agent       | "Legacy Code Expert Agent: analyze CustomerOrderProcessor for seams"               |
 | **Review Request** | Agent requests another agent's review       | "Legacy Code Expert → Orchestrator: please ask Refactoring Expert to review"       |
 | **Finding**        | Agent reports an observation                | "Product Expert: BR-012 confirmed, test needed for edge case"                      |
 | **Question**       | Agent cannot proceed without information    | "Product Expert: is the $200 discount threshold intentional?"                      |

@@ -32,15 +32,15 @@ Phase 1 is complete when **all** of the following are true:
 
 ## Agents Active in Phase 1
 
-| Agent                    | Role                                                                      |
-| ------------------------ | ------------------------------------------------------------------------- |
-| **Legacy Code Expert Agent**       | Leads — identifies seams, designs interfaces, implements safe changes     |
-| **Refactoring Expert Agent**         | Reviews every change for behavior preservation; approves each step        |
-| **Clean Code Expert Agent**         | Light advisory — names new interfaces and classes appropriately           |
-| **Microsoft Agent**      | Flags .NET 4.8 APIs that will need special treatment in Phase 3           |
-| **Product Expert Agent** | Standby — alerted if a seam boundary would hide visible business behavior |
-| **QA Agent**             | Begins mapping user-facing workflows from .aspx pages                     |
-| **Orchestrator**         | Tracks per-class progress; enforces gate; routes conflicts                |
+| Agent                        | Role                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| **Legacy Code Expert Agent** | Leads — identifies seams, designs interfaces, implements safe changes     |
+| **Refactoring Expert Agent** | Reviews every change for behavior preservation; approves each step        |
+| **Clean Code Expert Agent**  | Light advisory — names new interfaces and classes appropriately           |
+| **Microsoft Agent**          | Flags .NET 4.8 APIs that will need special treatment in Phase 3           |
+| **Product Expert Agent**     | Standby — alerted if a seam boundary would hide visible business behavior |
+| **QA Agent**                 | Begins mapping user-facing workflows from .aspx pages                     |
+| **Orchestrator**             | Tracks per-class progress; enforces gate; routes conflicts                |
 
 ---
 
@@ -68,9 +68,9 @@ Output: `inventory.md` and `dependency-map.md`
 
 ---
 
-### Step 2: Prioritisation
+### Step 2: Prioritization
 
-Not all classes are equal. Prioritise by:
+Not all classes are equal. Prioritize by:
 
 1. **Classes with the most business logic** — highest value seams
 2. **Classes called by the most other classes** — breaking their static dependencies unblocks the most

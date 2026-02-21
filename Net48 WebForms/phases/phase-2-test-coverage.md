@@ -30,15 +30,15 @@ Phase 2 is complete when **all** of the following are true:
 
 ## Agents Active in Phase 2
 
-| Agent                    | Role                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| **Legacy Code Expert Agent**       | Leads — writes characterization tests; infers business rules from code behavior |
-| **Product Expert Agent** | Leads — receives inferred rules; validates, names, and catalogues them          |
-| **QA Agent**             | Leads — produces workflow maps and draft end-to-end test cases                  |
-| **Refactoring Expert Agent**         | Advisory — helps identify structural patterns that reveal business rules        |
-| **Clean Code Expert Agent**         | Advisory — ensures test and rule names use business language                    |
-| **Microsoft Agent**      | Advisory — recommends test framework setup and CI tooling                       |
-| **Orchestrator**         | Tracks coverage progress; routes anomalies; enforces gate                       |
+| Agent                        | Role                                                                            |
+| ---------------------------- | ------------------------------------------------------------------------------- |
+| **Legacy Code Expert Agent** | Leads — writes characterization tests; infers business rules from code behavior |
+| **Product Expert Agent**     | Leads — receives inferred rules; validates, names, and catalogues them          |
+| **QA Agent**                 | Leads — produces workflow maps and draft end-to-end test cases                  |
+| **Refactoring Expert Agent** | Advisory — helps identify structural patterns that reveal business rules        |
+| **Clean Code Expert Agent**  | Advisory — ensures test and rule names use business language                    |
+| **Microsoft Agent**          | Advisory — recommends test framework setup and CI tooling                       |
+| **Orchestrator**             | Tracks coverage progress; routes anomalies; enforces gate                       |
 
 ---
 
@@ -241,7 +241,7 @@ if (daysPastDue > 30)
   → BR-018: Late fee applies after 30 days past due
 ```
 
-### Technique 3: Analyse the Database Schema
+### Technique 3: Analyze the Database Schema
 
 Constraints, foreign keys, default values, and NOT NULL columns encode business rules.
 
@@ -321,15 +321,15 @@ These maps drive Phase 2 draft test cases and Phase 3 acceptance testing.
 
 ## Deliverables
 
-| Deliverable                   | Owner                | Description                                    |
-| ----------------------------- | -------------------- | ---------------------------------------------- |
-| `business-rules/catalogue.md` | Product Expert Agent | Complete Business Rule Catalogue               |
-| `tests/characterization/`     | Legacy Code Expert Agent       | Full characterization test suite               |
-| `tests/coverage-report.md`    | Orchestrator         | Per-class coverage summary                     |
-| `anomalies.md`                | Product Expert Agent | All unresolved anomalies and their disposition |
-| `workflow-maps/`              | QA Agent             | User-facing workflow maps per feature area     |
-| `test-cases/phase-2-draft/`   | QA Agent             | Draft E2E test cases for all P1/P2 rules       |
-| Phase 3 gate checklist        | Orchestrator         | Completed and signed off                       |
+| Deliverable                   | Owner                    | Description                                    |
+| ----------------------------- | ------------------------ | ---------------------------------------------- |
+| `business-rules/catalogue.md` | Product Expert Agent     | Complete Business Rule Catalogue               |
+| `tests/characterization/`     | Legacy Code Expert Agent | Full characterization test suite               |
+| `tests/coverage-report.md`    | Orchestrator             | Per-class coverage summary                     |
+| `anomalies.md`                | Product Expert Agent     | All unresolved anomalies and their disposition |
+| `workflow-maps/`              | QA Agent                 | User-facing workflow maps per feature area     |
+| `test-cases/phase-2-draft/`   | QA Agent                 | Draft E2E test cases for all P1/P2 rules       |
+| Phase 3 gate checklist        | Orchestrator             | Completed and signed off                       |
 
 ---
 

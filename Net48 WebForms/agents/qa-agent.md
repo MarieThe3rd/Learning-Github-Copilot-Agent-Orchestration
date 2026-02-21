@@ -250,7 +250,7 @@ Before writing test cases, the QA Agent maps all user-facing workflows from the 
 
 ---
 
-## Test Suite Organisation
+## Test Suite Organization
 
 Test cases are grouped into suites by feature area:
 

@@ -4,7 +4,7 @@
 
 This folder contains the agent orchestration system for modernizing **.NET 8 console applications** and **.NET 8 Blazor applications**. These apps are already on modern .NET, so the problem is different from a Web Forms migration — the goal here is **architecture, test coverage, and clean code**, not framework migration.
 
-If you are migrating a legacy ASP.NET Web Forms (.NET 4.8) application, use the [`Agent Orchestration`](../Agent%20Orchestration) folder instead.
+If you are migrating a legacy ASP.NET Web Forms (.NET 4.8) application, use the [`Net48 WebForms`](../Net48%20WebForms) folder instead.
 
 ---
 
