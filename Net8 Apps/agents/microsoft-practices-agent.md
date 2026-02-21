@@ -103,7 +103,7 @@ Architecture: Vertical Slice — see Architect Agent
 - [ ] Nullable reference types enabled project-wide; all warnings resolved
 - [ ] Build has zero errors and zero new warnings on .NET 10
 
-### API Modernisation
+### API Modernization
 
 - [ ] All `Task.Delay` / `Thread.Sleep` background loops replaced with `PeriodicTimer`
 - [ ] All `IHostedService` implementations reviewed — convert to `BackgroundService` where appropriate
