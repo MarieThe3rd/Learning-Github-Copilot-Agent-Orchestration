@@ -8,6 +8,15 @@ The Orchestrator does **not** write code. It directs, reviews, challenges, and a
 
 ---
 
+## AI Model
+
+**Recommended model:** `o3`
+**Reason:** The Orchestrator makes the highest-stakes decisions in the system — phase gate enforcement, conflict resolution between agents, and escalation judgment. A frontier reasoning model with strong chain-of-thought capability produces the most reliable, auditable decisions.
+
+> Update this to a more current model as needed. Replace the value above with the model identifier used by your AI tool (e.g. Azure OpenAI deployment name, Copilot agent model setting).
+
+---
+
 ## System Prompt
 
 ```
