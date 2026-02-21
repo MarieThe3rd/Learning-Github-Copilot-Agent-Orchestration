@@ -105,8 +105,8 @@ When an agent raises an `❌ Objection`, debate proceeds as follows:
 
 1. **Each agent states their position in one paragraph** — clear claim + rationale
 2. **Each agent responds to the other positions** — acknowledge valid points, rebut invalid ones
-3. **Agents may change their position** — changing your position when presented with a better argument is correct behaviour, not weakness
-4. **Orchestrator summarises** the state of agreement after each round
+3. **Agents may change their position** — changing your position when presented with a better argument is correct behavior, not weakness
+4. **Orchestrator summarizes** the state of agreement after each round
 5. **Maximum two debate rounds** before Orchestrator decides unilaterally
 6. **Orchestrator's decision is final** — reason is logged; all agents acknowledge and proceed
 
@@ -132,7 +132,7 @@ These rules are enforced by the Orchestrator and verified by the Code Historian 
 | All existing tests green before commit                         | Code Historian requires test run result in CHR entry                   |
 | Test written before or alongside code change                   | Refactoring Expert and Clean Code Expert verify in review              |
 | No change larger than can be reviewed in a single review round | Legacy Code Expert can request a split; proposer must comply           |
-| Rollback is always possible                                    | Each commit must be independently revertable with `git revert`         |
+| Rollback is always possible                                    | Each commit must be independently revertible with `git revert`         |
 
 ### Commit Size Guidelines
 

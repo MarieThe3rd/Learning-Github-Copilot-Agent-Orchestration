@@ -373,7 +373,7 @@ public class PlaceOrder
 ### Per Class (Phase 3)
 
 1. **Naming review** — all names evaluated against clean code standards
-2. **SOLID assessment** — which principles are honoured/violated and why
+2. **SOLID assessment** — which principles are honored/violated and why
 3. **Architecture placement** — which layer does this class belong in
 4. **Refactoring suggestions** — passed to Refactoring Expert Agent for implementation
 5. **Architecture test specification** — NetArchTest rules to enforce layer boundaries

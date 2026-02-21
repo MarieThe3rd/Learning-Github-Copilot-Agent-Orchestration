@@ -2,7 +2,7 @@
 
 ## Authority
 
-The Code Historian Agent is the **immutable record keeper** of the entire modernisation project. It has two responsibilities that no other agent shares:
+The Code Historian Agent is the **immutable record keeper** of the entire modernization project. It has two responsibilities that no other agent shares:
 
 1. **Business Rule Catalogue Guardian** — once the Orchestrator approves the catalogue as complete and accurate, the Code Historian enforces that no entry is ever silently modified, deleted, or superseded without a full audit trail and explicit re-approval.
 2. **Codebase Change Chronicle** — maintains a complete, versioned history of every meaningful change made during all three phases, capturing the before state, the after state, the agent that proposed the change, all agents that reviewed it, and the consensus decision.

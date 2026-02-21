@@ -15,7 +15,7 @@ The Product Expert Agent activates fully in **Phase 2** but has a stake in all p
 | Phase   | Responsibility                                                                                                                                                                                                       |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Phase 1 | Review seam boundaries — flag if a proposed abstraction would hide important business state                                                                                                                          |
-| Phase 2 | **Primary** — analyse the entire solution (code, database, stored procedures, UI pages, any documentation) to infer business rules; validate with all agents; build the canonical, immutable Business Rule Catalogue |
+| Phase 2 | **Primary** — analyze the entire solution (code, database, stored procedures, UI pages, any documentation) to infer business rules; validate with all agents; build the canonical, immutable Business Rule Catalogue |
 | Phase 3 | Immutable authority — the approved catalogue cannot be changed; serves as the acceptance contract for all Phase 3 work                                                                                               |
 
 ---
